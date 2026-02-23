@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Dokter - Hasna Medika Karangasem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0935c9; /* Warna biru medis */
+            --secondary-color: #f0fdfa;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --bg-color: #f3f4f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .schedule-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .doctor-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- REVISI BAGIAN INI --- */
+        .doctor-image-wrapper {
+            width: 100%;
+            /* Tinggi diperbesar sedikit agar lebih proporsional untuk foto potret */
+            height: 280px; 
+            background-color: #e5e7eb;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .doctor-image {
+            width: 100%;
+            height: 100%;
+            /* Kembali ke 'cover' agar memenuhi lebar kartu */
+            object-fit: cover; 
+            /* KUNCI UTAMA: Fokuskan potongan ke 'top center' (atas tengah) 
+               agar wajah tidak terpotong, meskipun bagian dada ke bawah mungkin sedikit terpotong */
+            object-position: top center; 
+        }
+        /* ------------------------- */
+
+        .specialty-badge {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .doctor-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .doctor-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .schedule-list {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .day {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .time {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* Responsif untuk layar HP kecil */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .doctor-image-wrapper {
+                /* Menyesuaikan tinggi di HP juga */
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="hasna.png" alt="Logo Klinik Hasna Medika" style="width: 100px; margin-bottom: 30px;">
+        <h1>Jadwal Praktik Dokter</h1>
+        <p>Klinik Utama Hasna Medika Karangasem</p>
+    </div>
+
+    <div class="schedule-container">
+        
+        <div class="doctor-card">
+            <div class="doctor-image-wrapper">
+                <img src="dr.ray.jpg" alt="Foto Dokter 1" class="doctor-image">
+                <span class="specialty-badge">Spesialis Jantung (Sp.JP)</span>
+            </div>
+            <div class="doctor-info">
+                <h2 class="doctor-name">dr I Putu Raynantha Surya, Sp.Jp</h2>
+                <ul class="schedule-list">
+                    <li class="schedule-item">
+                        <span class="day">Senin - Jumat</span>
+                        <span class="time">08:00 - 14:00</span>
+                    </li>
+                    <li class="schedule-item">
+                        <span class="day">Sabtu - Minggu</span>
+                        <span class="time">Libur</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <div class="doctor-image-wrapper">
+                <img src="dr.gede.jpg" alt="Foto Dokter 1" class="doctor-image">
+                <span class="specialty-badge">Spesialis Jantung (Sp.JP)</span>
+            </div>
+            <div class="doctor-info">
+                <h2 class="doctor-name">dr Gede Aditya Sp.JP</h2>
+                <ul class="schedule-list">
+                    <li class="schedule-item">
+                        <span class="day">Senin, Rabu, Sabtu</span>
+                        <span class="time">06:00 - 07:15</span>
+                    </li>
+                    <li class="schedule-item">
+                        <span class="day">Senin, Selasa, Kamis, Jumat</span>
+                        <span class="time">18:00 - 21:00</span>
+                    </li>
+                    <li class="schedule-item">
+                        <span class="day">Minggu</span>
+                        <span class="time">Libur</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <div class="doctor-image-wrapper">
+                <img src="dr.wisnu.jpg" alt="Foto Dokter 2" class="doctor-image">
+                <span class="specialty-badge">Penyakit Dalam (Sp.PD)</span>
+            </div>
+            <div class="doctor-info">
+                <h2 class="doctor-name">dr I Made Wisnu Wardhana Sp.PD</h2>
+                <ul class="schedule-list">
+                    <li class="schedule-item">
+                        <span class="day">Senin & Kamis</span>
+                        <span class="time">14:30 - 17:00</span>
+                    </li>
+                    <li class="schedule-item">
+                        <span class="day">Selasa, Rabu, Jumat</span>
+                        <span class="time">13:00 - 17:00</span>
+                    </li>
+                    <li class="schedule-item">
+                        <span class="day">Sabtu - Minggu</span>
+                        <span class="time">Libur</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <div class="doctor-image-wrapper">
+                <img src="dr.Djiu Wina, Sp.A.jpg" alt="Foto Dokter 3" class="doctor-image">
+                <span class="specialty-badge">Anak (Sp.A)</span>
+            </div>
+            <div class="doctor-info">
+                <h2 class="doctor-name">dr Djiu Wina Sp.A</h2>
+                <ul class="schedule-list">
+                    <li class="schedule-item">
+                        <span class="day">Senin - Jumat</span>
+                        <span class="time">16:00 - 18:00</span>
+                    </li>
+                    <li class="schedule-item">
+                        <span class="day">Sabtu - Minggu</span>
+                        <span class="time">Libur</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
