@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadwal Dokter - Hasna Medika Karangasem</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Informasi Jadwal Praktik Dokter Spesialis | Klinik Utama Hasna Medika</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0935c9; /* Warna biru medis */
-            --secondary-color: #f0fdfa;
+            --primary-color: #0935c9; 
+            --primary-hover: #072aa0;
+            --secondary-color: #e0e7ff; /* Biru muda yang lebih lembut */
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --white: #ffffff;
             --bg-color: #f3f4f6;
+            --border-color: #e5e7eb;
         }
 
         * {
@@ -28,130 +30,189 @@
             padding: 40px 20px;
         }
 
+        /* --- Header Styling --- */
         .header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
+        }
+
+        .header img {
+            width: 120px;
+            margin-bottom: 20px;
         }
 
         .header h1 {
             color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .header p {
             color: var(--text-light);
             font-size: 1.1rem;
+            font-weight: 400;
         }
 
+        /* --- Filter Section (Dinamis) --- */
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto 30px auto;
+            text-align: right;
+        }
+
+        .filter-select {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-select:focus {
+            border-color: var(--primary-color);
+        }
+
+        /* --- Schedule Container & Cards --- */
         .schedule-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .doctor-card {
             background-color: var(--white);
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            border: 1px solid var(--border-color);
         }
 
         .doctor-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        /* --- REVISI BAGIAN INI --- */
         .doctor-image-wrapper {
             width: 100%;
-            /* Tinggi diperbesar sedikit agar lebih proporsional untuk foto potret */
-            height: 280px; 
+            height: 260px; 
             background-color: #e5e7eb;
-            overflow: hidden;
             position: relative;
         }
 
         .doctor-image {
             width: 100%;
             height: 100%;
-            /* Kembali ke 'cover' agar memenuhi lebar kartu */
             object-fit: cover; 
-            /* KUNCI UTAMA: Fokuskan potongan ke 'top center' (atas tengah) 
-               agar wajah tidak terpotong, meskipun bagian dada ke bawah mungkin sedikit terpotong */
             object-position: top center; 
         }
-        /* ------------------------- */
 
         .specialty-badge {
             position: absolute;
-            bottom: 15px;
-            left: 15px;
+            bottom: 12px;
+            left: 12px;
             background-color: var(--primary-color);
             color: var(--white);
-            padding: 5px 15px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 0.8rem;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .doctor-info {
-            padding: 25px;
+            padding: 20px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .doctor-name {
-            font-size: 1.25rem;
-            font-weight: 700;
+            font-size: 1.15rem;
+            font-weight: 600;
             color: var(--text-dark);
             margin-bottom: 15px;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
+            line-height: 1.4;
         }
 
         .schedule-list {
             list-style: none;
             flex-grow: 1;
+            margin-bottom: 20px;
         }
 
         .schedule-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .day {
-            font-weight: 600;
-            color: var(--text-light);
+            font-weight: 500;
+            color: var(--text-dark);
         }
 
         .time {
             background-color: var(--secondary-color);
             color: var(--primary-color);
-            padding: 4px 12px;
-            border-radius: 8px;
+            padding: 4px 10px;
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
-        /* Responsif untuk layar HP kecil */
+        /* --- Action Button (Praktis) --- */
+        .btn-appointment {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .btn-appointment:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Responsif untuk layar HP */
         @media (max-width: 600px) {
             .header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
-            .doctor-image-wrapper {
-                /* Menyesuaikan tinggi di HP juga */
-                height: 250px;
+            .filter-container {
+                text-align: center;
+            }
+            .filter-select {
+                width: 100%;
             }
         }
     </style>
@@ -159,20 +220,29 @@
 <body>
 
     <div class="header">
-        <img src="hasna.png" alt="Logo Klinik Hasna Medika" style="width: 100px; margin-bottom: 30px;">
-        <h1>Jadwal Praktik Dokter</h1>
-        <p>Klinik Utama Hasna Medika Karangasem</p>
+        <img src="hasna.png" alt="Logo Klinik Hasna Medika">
+        <h1>Jadwal Praktik Dokter Spesialis</h1>
+        <p>Pelayanan Medis Berkualitas di Klinik Utama Hasna Medika Karangasem</p>
     </div>
 
-    <div class="schedule-container">
+    <div class="filter-container">
+        <select id="specialty-filter" class="filter-select">
+            <option value="all">Semua Spesialisasi</option>
+            <option value="jantung">Spesialis Jantung (Sp.JP)</option>
+            <option value="penyakit-dalam">Penyakit Dalam (Sp.PD)</option>
+            <option value="anak">Spesialis Anak (Sp.A)</option>
+        </select>
+    </div>
+
+    <div class="schedule-container" id="schedule-container">
         
-        <div class="doctor-card">
+        <div class="doctor-card" data-specialty="jantung">
             <div class="doctor-image-wrapper">
-                <img src="dr.ray.jpg" alt="Foto Dokter 1" class="doctor-image">
-                <span class="specialty-badge">Spesialis Jantung (Sp.JP)</span>
+                <img src="dr.ray.jpg" alt="dr I Putu Raynantha Surya" class="doctor-image">
+                <span class="specialty-badge">Jantung & Pembuluh Darah</span>
             </div>
             <div class="doctor-info">
-                <h2 class="doctor-name">dr I Putu Raynantha Surya, Sp.Jp</h2>
+                <h2 class="doctor-name">dr. I Putu Raynantha Surya, Sp.JP</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
                         <span class="day">Senin - Jumat</span>
@@ -183,23 +253,24 @@
                         <span class="time">Libur</span>
                     </li>
                 </ul>
+                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20I%20Putu%20Raynantha%20Surya,%20Sp.JP." target="_blank" class="btn-appointment">Buat Janji Temu</a>
             </div>
         </div>
 
-        <div class="doctor-card">
+        <div class="doctor-card" data-specialty="jantung">
             <div class="doctor-image-wrapper">
-                <img src="dr.gede.jpg" alt="Foto Dokter 1" class="doctor-image">
-                <span class="specialty-badge">Spesialis Jantung (Sp.JP)</span>
+                <img src="dr.gede.jpg" alt="dr Gede Aditya" class="doctor-image">
+                <span class="specialty-badge">Jantung & Pembuluh Darah</span>
             </div>
             <div class="doctor-info">
-                <h2 class="doctor-name">dr Gede Aditya Sp.JP</h2>
+                <h2 class="doctor-name">dr. Gede Aditya, Sp.JP</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
-                        <span class="day">Senin, Rabu, Sabtu</span>
+                        <span class="day">Sen, Rab, Sab</span>
                         <span class="time">06:00 - 07:15</span>
                     </li>
                     <li class="schedule-item">
-                        <span class="day">Senin, Selasa, Kamis, Jumat</span>
+                        <span class="day">Sen, Sel, Kam, Jum</span>
                         <span class="time">18:00 - 21:00</span>
                     </li>
                     <li class="schedule-item">
@@ -207,23 +278,24 @@
                         <span class="time">Libur</span>
                     </li>
                 </ul>
+                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20I%20Gede%20Aditya%20Sp.JP." target="_blank" class="btn-appointment">Buat Janji Temu</a>
             </div>
         </div>
 
-        <div class="doctor-card">
+        <div class="doctor-card" data-specialty="penyakit-dalam">
             <div class="doctor-image-wrapper">
-                <img src="dr.wisnu.jpg" alt="Foto Dokter 2" class="doctor-image">
-                <span class="specialty-badge">Penyakit Dalam (Sp.PD)</span>
+                <img src="dr.wisnu.jpg" alt="dr I Made Wisnu Wardhana" class="doctor-image">
+                <span class="specialty-badge">Penyakit Dalam</span>
             </div>
             <div class="doctor-info">
-                <h2 class="doctor-name">dr I Made Wisnu Wardhana Sp.PD</h2>
+                <h2 class="doctor-name">dr. I Made Wisnu Wardhana, Sp.PD</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
                         <span class="day">Senin & Kamis</span>
                         <span class="time">14:30 - 17:00</span>
                     </li>
                     <li class="schedule-item">
-                        <span class="day">Selasa, Rabu, Jumat</span>
+                        <span class="day">Sel, Rab, Jum</span>
                         <span class="time">13:00 - 17:00</span>
                     </li>
                     <li class="schedule-item">
@@ -231,16 +303,17 @@
                         <span class="time">Libur</span>
                     </li>
                 </ul>
+                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20I%20Made%20Wisnu%20Wardhana,%20Sp.PD." target="_blank" class="btn-appointment">Buat Janji Temu</a>
             </div>
         </div>
 
-        <div class="doctor-card">
+        <div class="doctor-card" data-specialty="anak">
             <div class="doctor-image-wrapper">
-                <img src="dr.Djiu Wina, Sp.A.jpg" alt="Foto Dokter 3" class="doctor-image">
-                <span class="specialty-badge">Anak (Sp.A)</span>
+                <img src="dr.Djiu Wina, Sp.A.jpg" alt="dr Djiu Wina" class="doctor-image">
+                <span class="specialty-badge">Spesialis Anak</span>
             </div>
             <div class="doctor-info">
-                <h2 class="doctor-name">dr Djiu Wina Sp.A</h2>
+                <h2 class="doctor-name">dr. Djiu Wina, Sp.A</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
                         <span class="day">Senin - Jumat</span>
@@ -251,10 +324,27 @@
                         <span class="time">Libur</span>
                     </li>
                 </ul>
+                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20Djiu%20Wina%20Sp.A." target="_blank" class="btn-appointment">Buat Janji Temu</a>
+            </div>
             </div>
         </div>
 
     </div>
+
+    <script>
+        document.getElementById('specialty-filter').addEventListener('change', function() {
+            const selectedSpecialty = this.value;
+            const doctorCards = document.querySelectorAll('.doctor-card');
+
+            doctorCards.forEach(card => {
+                if (selectedSpecialty === 'all' || card.getAttribute('data-specialty') === selectedSpecialty) {
+                    card.style.display = 'flex'; // Tampilkan kartu
+                } else {
+                    card.style.display = 'none'; // Sembunyikan kartu
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
