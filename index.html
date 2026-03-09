@@ -125,7 +125,7 @@
             <option value="penyakit-dalam" data-i18n="filter_internal">Penyakit Dalam (Sp.PD)</option>
             <option value="anak" data-i18n="filter_pediatric">Spesialis Anak (Sp.A)</option>
             <option value="radiologi" data-i18n="filter_radio">Spesialis Radiologi (Sp.Rad)</option>
-            <option value="laboratorium" data-i18n="filter_lab">Spesialis Laboratorium (Sp.PK)</option>
+            <option value="Patologi Klinik" data-i18n="filter_lab">Spesialis Patologi Klinik (Sp.PK)</option>
         </select>
     </div>
 
@@ -244,7 +244,7 @@
             </div>
         </div>
         
-        <div class="doctor-card" data-specialty="laboratorium">
+        <div class="doctor-card" data-specialty="Patologi Klinik">
             <div class="doctor-image-wrapper">
                 <img src="dr.dewacahyadi.jpeg" alt="dr I Dewa Komang Agung Cahyadi" class="doctor-image">
                 <span class="specialty-badge" data-i18n="badge_lab">Spesialis Laboratorium</span>
@@ -253,8 +253,12 @@
                 <h2 class="doctor-name">dr. I Dewa Komang Agung Cahyadi Sp.PK</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
-                        <span class="day" data-i18n="day_tue">Selasa</span>
+                        <span class="day" data-i18n="day_tue">Senin - Jumat</span>
                         <span class="time">15:00 - 17:00</span>
+                    </li>
+                    <li class="schedule-item">
+                        <span class="day" data-i18n="day_sat_sun">Sabtu - Minggu</span>
+                        <span class="time" data-i18n="status_closed">Libur</span>
                     </li>
                 </ul>
                 <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20Dewa%20Komang%20Agung%20Cahyadi%Sp.PK." target="_blank" class="btn-appointment" data-i18n="btn_book">Buat Janji Temu</a>
@@ -285,13 +289,13 @@
                 subtitle: "Pelayanan Medis Berkualitas di Klinik Utama Hasna Medika Karangasem",
                 filter_all: "Semua Spesialisasi", filter_cardio: "Spesialis Jantung (Sp.JP)",
                 filter_internal: "Penyakit Dalam (Sp.PD)", filter_pediatric: "Spesialis Anak (Sp.A)",
-                filter_radio: "Spesialis Radiologi (Sp.Rad)", filter_lab: "Spesialis Laboratorium (Sp.PK)",
+                filter_radio: "Spesialis Radiologi (Sp.Rad)", filter_lab: "Patologi Klinik (Sp.PK)",
                 badge_cardio: "Jantung & Pembuluh Darah", badge_internal: "Penyakit Dalam",
-                badge_pediatric: "Spesialis Anak", badge_radio: "Spesialis Radiologi", badge_lab: "Spesialis Laboratorium",
+                badge_pediatric: "Spesialis Anak", badge_radio: "Spesialis Radiologi", badge_lab: "Spesialis Patologi Klinik",
                 day_mon_fri: "Senin - Jumat", day_sat_sun: "Sabtu - Minggu",
                 day_mon_wed_sat: "Sen, Rab, Sab", day_mon_tue_thu_fri: "Sen, Sel, Kam, Jum",
                 day_mon_thu: "Senin & Kamis", day_tue_wed_fri: "Sel, Rab, Jum",
-                day_tue: "Selasa", day_sun: "Minggu", status_closed: "Libur", btn_book: "Buat Janji Temu"
+                day_tue: "Senin - Jumat", day_sun: "Minggu", status_closed: "Libur", btn_book: "Buat Janji Temu"
             },
             en: {
                 lang_title: "Select Language",
@@ -301,11 +305,11 @@
                 filter_internal: "Internal Medicine (Sp.PD)", filter_pediatric: "Pediatrician (Sp.A)",
                 filter_radio: "Radiologist (Sp.Rad)", filter_lab: "Clinical Pathology (Sp.PK)",
                 badge_cardio: "Cardiology", badge_internal: "Internal Medicine",
-                badge_pediatric: "Pediatrics", badge_radio: "Radiology", badge_lab: "Laboratory",
+                badge_pediatric: "Pediatrics", badge_radio: "Radiology", badge_lab: "Clinical Pathology",
                 day_mon_fri: "Monday - Friday", day_sat_sun: "Saturday - Sunday",
                 day_mon_wed_sat: "Mon, Wed, Sat", day_mon_tue_thu_fri: "Mon, Tue, Thu, Fri",
                 day_mon_thu: "Monday & Thursday", day_tue_wed_fri: "Tue, Wed, Fri",
-                day_tue: "Tuesday", day_sun: "Sunday", status_closed: "Closed", btn_book: "Book Appointment"
+                day_tue: "Monday - Friday", day_sun: "Sunday", status_closed: "Closed", btn_book: "Book Appointment"
             }
         };
 
