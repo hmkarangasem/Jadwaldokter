@@ -9,7 +9,7 @@
         :root {
             --primary-color: #0935c9; 
             --primary-hover: #072aa0;
-            --secondary-color: #e0e7ff; /* Biru muda yang lebih lembut */
+            --secondary-color: #e0e7ff; 
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --white: #ffffff;
@@ -28,211 +28,104 @@
             background-color: var(--bg-color);
             color: var(--text-dark);
             padding: 40px 20px;
+            position: relative; /* Untuk posisi tombol bahasa */
         }
 
         /* --- Header Styling --- */
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header img { width: 120px; margin-bottom: 20px; }
+        .header h1 { color: var(--primary-color); font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .header p { color: var(--text-light); font-size: 1.1rem; font-weight: 400; }
 
-        .header img {
-            width: 120px;
-            margin-bottom: 20px;
-        }
-
-        .header h1 {
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }
-
-        .header p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
-
-        /* --- Filter Section (Dinamis) --- */
-        .filter-container {
-            max-width: 1200px;
-            margin: 0 auto 30px auto;
-            text-align: right;
-        }
-
-        .filter-select {
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--white);
-            outline: none;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: border-color 0.3s ease;
-        }
-
-        .filter-select:focus {
-            border-color: var(--primary-color);
-        }
+        /* --- Filter Section --- */
+        .filter-container { max-width: 1200px; margin: 0 auto 30px auto; text-align: right; }
+        .filter-select { padding: 10px 20px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 1rem; font-family: 'Poppins', sans-serif; color: var(--text-dark); background-color: var(--white); outline: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: border-color 0.3s ease; }
+        .filter-select:focus { border-color: var(--primary-color); }
 
         /* --- Schedule Container & Cards --- */
-        .schedule-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .schedule-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+        .doctor-card { background-color: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; display: flex; flex-direction: column; border: 1px solid var(--border-color); }
+        .doctor-card:hover { transform: translateY(-8px); box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1); }
+        .doctor-image-wrapper { width: 100%; height: 260px; background-color: #e5e7eb; position: relative; }
+        .doctor-image { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+        .specialty-badge { position: absolute; bottom: 12px; left: 12px; background-color: var(--primary-color); color: var(--white); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .doctor-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .doctor-name { font-size: 1.15rem; font-weight: 600; color: var(--text-dark); margin-bottom: 15px; line-height: 1.4; }
+        .schedule-list { list-style: none; flex-grow: 1; margin-bottom: 20px; }
+        .schedule-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.9rem; padding-bottom: 8px; border-bottom: 1px dashed var(--border-color); }
+        .schedule-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .day { font-weight: 500; color: var(--text-dark); }
+        .time { background-color: var(--secondary-color); color: var(--primary-color); padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; }
+        .btn-appointment { display: block; width: 100%; text-align: center; padding: 12px; background-color: var(--primary-color); color: var(--white); text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: background-color 0.3s ease; margin-top: auto; }
+        .btn-appointment:hover { background-color: var(--primary-hover); }
 
-        .doctor-card {
-            background-color: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid var(--border-color);
+        /* --- Floating Language Button --- */
+        .btn-floating-lang {
+            position: fixed; bottom: 30px; right: 30px; background-color: var(--primary-color); color: white;
+            border: none; border-radius: 50px; padding: 12px 20px; font-size: 1rem; font-weight: 600;
+            cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 999;
+            transition: transform 0.2s, background-color 0.2s; display: flex; align-items: center; gap: 8px;
         }
+        .btn-floating-lang:hover { transform: scale(1.05); background-color: var(--primary-hover); }
 
-        .doctor-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1);
+        /* --- Popup Modal Overlay --- */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(3px); z-index: 1000;
+            justify-content: center; align-items: center;
         }
-
-        .doctor-image-wrapper {
-            width: 100%;
-            height: 260px; 
-            background-color: #e5e7eb;
-            position: relative;
+        .modal-content {
+            background: white; padding: 30px; border-radius: 16px; width: 90%; max-width: 350px;
+            text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2); animation: popIn 0.3s ease-out;
         }
-
-        .doctor-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            object-position: top center; 
+        @keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        
+        .modal-content h3 { margin-bottom: 20px; color: var(--text-dark); font-size: 1.3rem; }
+        .lang-option {
+            display: block; width: 100%; padding: 12px; margin-bottom: 10px; background: var(--bg-color);
+            border: 1px solid var(--border-color); border-radius: 8px; font-size: 1rem; cursor: pointer;
+            transition: all 0.2s; color: var(--text-dark); font-weight: 500; text-align: center; text-decoration: none;
         }
+        .lang-option:hover, .lang-option.active { background: var(--secondary-color); border-color: var(--primary-color); color: var(--primary-color); }
+        .btn-close-modal { margin-top: 15px; background: none; border: none; color: var(--text-light); cursor: pointer; font-size: 0.9rem; text-decoration: underline; }
 
-        .specialty-badge {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .doctor-info {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .doctor-name {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .schedule-list {
-            list-style: none;
-            flex-grow: 1;
-            margin-bottom: 20px;
-        }
-
-        .schedule-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            padding-bottom: 8px;
-            border-bottom: 1px dashed var(--border-color);
-        }
-
-        .schedule-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .day {
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-
-        .time {
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-        /* --- Action Button (Praktis) --- */
-        .btn-appointment {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 12px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: background-color 0.3s ease;
-            margin-top: auto;
-        }
-
-        .btn-appointment:hover {
-            background-color: var(--primary-hover);
-        }
-
-        /* Responsif untuk layar HP */
         @media (max-width: 600px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            .filter-container {
-                text-align: center;
-            }
-            .filter-select {
-                width: 100%;
-            }
+            .header h1 { font-size: 1.8rem; }
+            .filter-container { text-align: center; }
+            .filter-select { width: 100%; }
+            .btn-floating-lang { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
+    <button class="btn-floating-lang" onclick="openLangModal()">
+        🌐 <span id="current-lang-text">ID</span>
+    </button>
+
+    <div class="modal-overlay" id="langModal" onclick="closeLangModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 data-i18n="lang_title">Pilih Bahasa</h3>
+            <button class="lang-option active" onclick="changeLanguage('id')" id="btn-lang-id">🇮🇩 Bahasa Indonesia</button>
+            <button class="lang-option" onclick="changeLanguage('en')" id="btn-lang-en">🇬🇧 English</button>
+            <button class="btn-close-modal" onclick="closeLangModal(null)">Tutup / Close</button>
+        </div>
+    </div>
+
     <div class="header">
         <img src="hasna.png" alt="Logo Klinik Hasna Medika">
-        <h1>Jadwal Praktik Dokter Spesialis</h1>
-        <p>Pelayanan Medis Berkualitas di Klinik Utama Hasna Medika Karangasem</p>
+        <h1 data-i18n="title">Jadwal Praktik Dokter Spesialis</h1>
+        <p data-i18n="subtitle">Pelayanan Medis Berkualitas di Klinik Utama Hasna Medika Karangasem</p>
     </div>
 
     <div class="filter-container">
         <select id="specialty-filter" class="filter-select">
-            <option value="all">Semua Spesialisasi</option>
-            <option value="jantung">Spesialis Jantung (Sp.JP)</option>
-            <option value="penyakit-dalam">Penyakit Dalam (Sp.PD)</option>
-            <option value="anak">Spesialis Anak (Sp.A)</option>
-            <option value="radiologi">Spesialis Radiologi (Sp.Rad)</option>
-            <option value="laboratorium">Spesialis Laboratorium (Sp.PK)</option>
+            <option value="all" data-i18n="filter_all">Semua Spesialisasi</option>
+            <option value="jantung" data-i18n="filter_cardio">Spesialis Jantung (Sp.JP)</option>
+            <option value="penyakit-dalam" data-i18n="filter_internal">Penyakit Dalam (Sp.PD)</option>
+            <option value="anak" data-i18n="filter_pediatric">Spesialis Anak (Sp.A)</option>
+            <option value="radiologi" data-i18n="filter_radio">Spesialis Radiologi (Sp.Rad)</option>
+            <option value="laboratorium" data-i18n="filter_lab">Spesialis Laboratorium (Sp.PK)</option>
         </select>
     </div>
 
@@ -241,148 +134,205 @@
         <div class="doctor-card" data-specialty="jantung">
             <div class="doctor-image-wrapper">
                 <img src="dr.ray.jpg" alt="dr I Putu Raynantha Surya" class="doctor-image">
-                <span class="specialty-badge">Jantung & Pembuluh Darah</span>
+                <span class="specialty-badge" data-i18n="badge_cardio">Jantung & Pembuluh Darah</span>
             </div>
             <div class="doctor-info">
                 <h2 class="doctor-name">dr. I Putu Raynantha Surya, Sp.JP</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
-                        <span class="day">Senin - Jumat</span>
+                        <span class="day" data-i18n="day_mon_fri">Senin - Jumat</span>
                         <span class="time">08:00 - 14:00</span>
                     </li>
                     <li class="schedule-item">
-                        <span class="day">Sabtu - Minggu</span>
-                        <span class="time">Libur</span>
+                        <span class="day" data-i18n="day_sat_sun">Sabtu - Minggu</span>
+                        <span class="time" data-i18n="status_closed">Libur</span>
                     </li>
                 </ul>
-                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20I%20Putu%20Raynantha%20Surya,%20Sp.JP." target="_blank" class="btn-appointment">Buat Janji Temu</a>
+                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20I%20Putu%20Raynantha%20Surya,%20Sp.JP." target="_blank" class="btn-appointment" data-i18n="btn_book">Buat Janji Temu</a>
             </div>
         </div>
 
         <div class="doctor-card" data-specialty="jantung">
             <div class="doctor-image-wrapper">
                 <img src="dr.gede.jpg" alt="dr Gede Aditya" class="doctor-image">
-                <span class="specialty-badge">Jantung & Pembuluh Darah</span>
+                <span class="specialty-badge" data-i18n="badge_cardio">Jantung & Pembuluh Darah</span>
             </div>
             <div class="doctor-info">
                 <h2 class="doctor-name">dr. Gede Aditya, Sp.JP</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
-                        <span class="day">Sen, Rab, Sab</span>
+                        <span class="day" data-i18n="day_mon_wed_sat">Sen, Rab, Sab</span>
                         <span class="time">06:00 - 07:15</span>
                     </li>
                     <li class="schedule-item">
-                        <span class="day">Sen, Sel, Kam, Jum</span>
+                        <span class="day" data-i18n="day_mon_tue_thu_fri">Sen, Sel, Kam, Jum</span>
                         <span class="time">18:00 - 21:00</span>
                     </li>
                     <li class="schedule-item">
-                        <span class="day">Minggu</span>
-                        <span class="time">Libur</span>
+                        <span class="day" data-i18n="day_sun">Minggu</span>
+                        <span class="time" data-i18n="status_closed">Libur</span>
                     </li>
                 </ul>
-                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20I%20Gede%20Aditya%20Sp.JP." target="_blank" class="btn-appointment">Buat Janji Temu</a>
+                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20I%20Gede%20Aditya%20Sp.JP." target="_blank" class="btn-appointment" data-i18n="btn_book">Buat Janji Temu</a>
             </div>
         </div>
 
         <div class="doctor-card" data-specialty="penyakit-dalam">
             <div class="doctor-image-wrapper">
                 <img src="dr.wisnu.jpg" alt="dr I Made Wisnu Wardhana" class="doctor-image">
-                <span class="specialty-badge">Penyakit Dalam</span>
+                <span class="specialty-badge" data-i18n="badge_internal">Penyakit Dalam</span>
             </div>
             <div class="doctor-info">
                 <h2 class="doctor-name">dr. I Made Wisnu Wardhana, Sp.PD</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
-                        <span class="day">Senin & Kamis</span>
+                        <span class="day" data-i18n="day_mon_thu">Senin & Kamis</span>
                         <span class="time">14:30 - 17:00</span>
                     </li>
                     <li class="schedule-item">
-                        <span class="day">Sel, Rab, Jum</span>
+                        <span class="day" data-i18n="day_tue_wed_fri">Sel, Rab, Jum</span>
                         <span class="time">13:00 - 17:00</span>
                     </li>
                     <li class="schedule-item">
-                        <span class="day">Sabtu - Minggu</span>
-                        <span class="time">Libur</span>
+                        <span class="day" data-i18n="day_sat_sun">Sabtu - Minggu</span>
+                        <span class="time" data-i18n="status_closed">Libur</span>
                     </li>
                 </ul>
-                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20I%20Made%20Wisnu%20Wardhana,%20Sp.PD." target="_blank" class="btn-appointment">Buat Janji Temu</a>
+                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20I%20Made%20Wisnu%20Wardhana,%20Sp.PD." target="_blank" class="btn-appointment" data-i18n="btn_book">Buat Janji Temu</a>
             </div>
         </div>
 
         <div class="doctor-card" data-specialty="anak">
             <div class="doctor-image-wrapper">
                 <img src="dr.Djiu Wina, Sp.A.jpg" alt="dr Djiu Wina" class="doctor-image">
-                <span class="specialty-badge">Spesialis Anak</span>
+                <span class="specialty-badge" data-i18n="badge_pediatric">Spesialis Anak</span>
             </div>
             <div class="doctor-info">
                 <h2 class="doctor-name">dr. Djiu Wina, Sp.A</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
-                        <span class="day">Senin - Jumat</span>
+                        <span class="day" data-i18n="day_mon_fri">Senin - Jumat</span>
                         <span class="time">16:00 - 18:00</span>
                     </li>
                     <li class="schedule-item">
-                        <span class="day">Sabtu - Minggu</span>
-                        <span class="time">Libur</span>
+                        <span class="day" data-i18n="day_sat_sun">Sabtu - Minggu</span>
+                        <span class="time" data-i18n="status_closed">Libur</span>
                     </li>
                 </ul>
-                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20Djiu%20Wina%20Sp.A." target="_blank" class="btn-appointment">Buat Janji Temu</a>
+                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20Djiu%20Wina%20Sp.A." target="_blank" class="btn-appointment" data-i18n="btn_book">Buat Janji Temu</a>
             </div>
-            </div>
-            <div class="doctor-card" data-specialty="radiologi">
+        </div>
+
+        <div class="doctor-card" data-specialty="radiologi">
             <div class="doctor-image-wrapper">
                 <img src="dr.putri Ayu.jpeg" alt="dr Putri Ayu Ratnasari" class="doctor-image">
-                <span class="specialty-badge">Spesialis Radiologi</span>
+                <span class="specialty-badge" data-i18n="badge_radio">Spesialis Radiologi</span>
             </div>
             <div class="doctor-info">
-                <h2 class="doctor-name">dr Putri Ayu Ratnasari, Sp.Rad</h2>
+                <h2 class="doctor-name">dr. Putri Ayu Ratnasari, Sp.Rad</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
-                        <span class="day">Senin - Jumat</span>
+                        <span class="day" data-i18n="day_mon_fri">Senin - Jumat</span>
                         <span class="time">12:00 - 14:00</span>
                     </li>
                     <li class="schedule-item">
-                        <span class="day">Sabtu - Minggu</span>
-                        <span class="time">Libur</span>
+                        <span class="day" data-i18n="day_sat_sun">Sabtu - Minggu</span>
+                        <span class="time" data-i18n="status_closed">Libur</span>
                     </li>
                 </ul>
-                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20Putri%20Ayu%20Ratnasari%Sp.Rad." target="_blank" class="btn-appointment">Buat Janji Temu</a>
+                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20Putri%20Ayu%20Ratnasari%Sp.Rad." target="_blank" class="btn-appointment" data-i18n="btn_book">Buat Janji Temu</a>
             </div>
-            </div>
-             <div class="doctor-card" data-specialty="laboratorium">
+        </div>
+        
+        <div class="doctor-card" data-specialty="laboratorium">
             <div class="doctor-image-wrapper">
                 <img src="dr.dewacahyadi.jpeg" alt="dr I Dewa Komang Agung Cahyadi" class="doctor-image">
-                <span class="specialty-badge">Spesialis Laboratorium</span>
+                <span class="specialty-badge" data-i18n="badge_lab">Spesialis Laboratorium</span>
             </div>
             <div class="doctor-info">
-                <h2 class="doctor-name">dr I Dewa Komang Agung Cahyadi Sp.PK</h2>
+                <h2 class="doctor-name">dr. I Dewa Komang Agung Cahyadi Sp.PK</h2>
                 <ul class="schedule-list">
                     <li class="schedule-item">
-                        <span class="day">Selasa</span>
+                        <span class="day" data-i18n="day_tue">Selasa</span>
                         <span class="time">15:00 - 17:00</span>
                     </li>
                 </ul>
-                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20Dewa%20Komang%20Agung%20Cahyadi%Sp.Rad." target="_blank" class="btn-appointment">Buat Janji Temu</a>
+                <a href="https://wa.me/6282311163611?text=Halo%20Klinik%20Utama%20Hasna%20Medika,%20saya%20ingin%20membuat%20janji%20temu%20dengan%20dr.%20Dewa%20Komang%20Agung%20Cahyadi%Sp.PK." target="_blank" class="btn-appointment" data-i18n="btn_book">Buat Janji Temu</a>
             </div>
-            </div>
+        </div>
         
-
     </div>
 
     <script>
+        // Fitur Filter
         document.getElementById('specialty-filter').addEventListener('change', function() {
             const selectedSpecialty = this.value;
             const doctorCards = document.querySelectorAll('.doctor-card');
-
             doctorCards.forEach(card => {
                 if (selectedSpecialty === 'all' || card.getAttribute('data-specialty') === selectedSpecialty) {
-                    card.style.display = 'flex'; // Tampilkan kartu
+                    card.style.display = 'flex'; 
                 } else {
-                    card.style.display = 'none'; // Sembunyikan kartu
+                    card.style.display = 'none'; 
                 }
             });
         });
-    </script>
 
+        // Fitur Bahasa (Kamus)
+        const translations = {
+            id: {
+                lang_title: "Pilih Bahasa",
+                title: "Jadwal Praktik Dokter Spesialis",
+                subtitle: "Pelayanan Medis Berkualitas di Klinik Utama Hasna Medika Karangasem",
+                filter_all: "Semua Spesialisasi", filter_cardio: "Spesialis Jantung (Sp.JP)",
+                filter_internal: "Penyakit Dalam (Sp.PD)", filter_pediatric: "Spesialis Anak (Sp.A)",
+                filter_radio: "Spesialis Radiologi (Sp.Rad)", filter_lab: "Spesialis Laboratorium (Sp.PK)",
+                badge_cardio: "Jantung & Pembuluh Darah", badge_internal: "Penyakit Dalam",
+                badge_pediatric: "Spesialis Anak", badge_radio: "Spesialis Radiologi", badge_lab: "Spesialis Laboratorium",
+                day_mon_fri: "Senin - Jumat", day_sat_sun: "Sabtu - Minggu",
+                day_mon_wed_sat: "Sen, Rab, Sab", day_mon_tue_thu_fri: "Sen, Sel, Kam, Jum",
+                day_mon_thu: "Senin & Kamis", day_tue_wed_fri: "Sel, Rab, Jum",
+                day_tue: "Selasa", day_sun: "Minggu", status_closed: "Libur", btn_book: "Buat Janji Temu"
+            },
+            en: {
+                lang_title: "Select Language",
+                title: "Specialist Doctor Schedule",
+                subtitle: "Quality Medical Services at Hasna Medika Main Clinic Karangasem",
+                filter_all: "All Specialties", filter_cardio: "Cardiologist (Sp.JP)",
+                filter_internal: "Internal Medicine (Sp.PD)", filter_pediatric: "Pediatrician (Sp.A)",
+                filter_radio: "Radiologist (Sp.Rad)", filter_lab: "Clinical Pathology (Sp.PK)",
+                badge_cardio: "Cardiology", badge_internal: "Internal Medicine",
+                badge_pediatric: "Pediatrics", badge_radio: "Radiology", badge_lab: "Laboratory",
+                day_mon_fri: "Monday - Friday", day_sat_sun: "Saturday - Sunday",
+                day_mon_wed_sat: "Mon, Wed, Sat", day_mon_tue_thu_fri: "Mon, Tue, Thu, Fri",
+                day_mon_thu: "Monday & Thursday", day_tue_wed_fri: "Tue, Wed, Fri",
+                day_tue: "Tuesday", day_sun: "Sunday", status_closed: "Closed", btn_book: "Book Appointment"
+            }
+        };
+
+        // Fungsi Buka Tutup Modal
+        const modal = document.getElementById("langModal");
+        function openLangModal() { modal.style.display = "flex"; }
+        function closeLangModal(event) {
+            if (!event || event.target === modal) { modal.style.display = "none"; }
+        }
+
+        // Fungsi Ganti Bahasa
+        function changeLanguage(lang) {
+            // Update teks pada elemen yang memiliki atribut data-i18n
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang][key]) { el.innerText = translations[lang][key]; }
+            });
+
+            // Update teks pada tombol mengambang
+            document.getElementById("current-lang-text").innerText = lang.toUpperCase();
+
+            // Ubah tampilan tombol aktif di modal
+            document.querySelectorAll('.lang-option').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-lang-' + lang).classList.add('active');
+
+            closeLangModal(null);
+        }
+    </script>
 </body>
 </html>
